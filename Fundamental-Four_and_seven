@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+
+std::string findLuckyNumber(int N) {
+    // Iterate from N/7 down to 0
+    for (int i = N / 7; i >= 0; i--) {
+        // Check if the remaining sum can be formed using lucky digits (4 or 7)
+        if ((N - i * 7) % 4 == 0) {
+            int j = (N - i * 7) / 4;
+            std::string luckyNumber = std::string(j, '4') + std::string(i, '7');
+            return luckyNumber;
+        }
+    }
+
+    // If no lucky number is found, return -1
+    return "-1";
+}
+
+int main() {
+    int N;
+ 
+    std::cin >> N;
+
+    std::string luckyNumber = findLuckyNumber(N);
+
+    std::cout <<luckyNumber << std::endl;
+
+    return 0;
+}
